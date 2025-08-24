@@ -12,11 +12,15 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY as string;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 app.use(express.json());
 app.use(cors());
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).send("Ok");
+});
+
 app.post("/ask-ai", async (req: Request, res: Response) => {
   try {
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
