@@ -3,8 +3,6 @@ import cors from "cors";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@supabase/supabase-js";
 import { chatMessageSchema } from "./validationSchema";
-import { ZodError, ZodRealError } from "zod";
-import { request } from "http";
 require("dotenv").config();
 const app = express();
 
