@@ -3,8 +3,15 @@ import cors from "cors";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@supabase/supabase-js";
 import { chatMessageSchema } from "./validationSchema";
-require("dotenv").config();
-const app = express();
+import 'dotenv/config';
+
+export const app = express();
+
+// Log all requests
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  next();
+});
 
 const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY as string;
