@@ -117,11 +117,16 @@ app.post("/chat", async (req: Request, res: Response) => {
   }
 });
 
-console.log("process.env.PORT", process.env.PORT);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export the app for use in Vercel serverless function
+export default app;
+
+// If running locally, start the server
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
 
 // const chat: any = ai.chats.create({
 //   model: "gemini-2.5-flash",
