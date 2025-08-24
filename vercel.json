@@ -1,6 +1,20 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/api/index.ts", "use": "@vercel/node" }],
-  "routes": [{ "src": "/api/(.*)", "dest": "/dist/api/index.js" }],
-  "buildCommand": "yarn build"
+  "builds": [
+    {
+      "src": "src/api/index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api"
+    }
+  ],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
 }
