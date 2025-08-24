@@ -8,5 +8,7 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/api" }
-  ]
+  ],
+  "buildCommand": "yarn vercel-build",
+  "outputDirectory": "dist"
 }
